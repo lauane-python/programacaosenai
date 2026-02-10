@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="div_principal" class="containerclass">
+        <h1 class="h1">CRUD-create read update delete</h1>
+       
+        <div id="div_botoes" class="div_botoesclass">
+            <button id="btn_cad_alunos" class="btn Verde">Cadastro de alunos</button>
+         
+            <button id="btn_cad_cursos" class="btn azul">Cadastro de cursos</button>
+           
+            <button id="btn_cad_professores" class="btn vermelho">Cadastro de professores</button>
+           
+            <button id="btn_cad_listar" class="btn vermelho">Listar Alunos</button>
+
+            <button id="btn_cad_listar_cursos" class="btn vermelho">Listar Cursos</button>
+
+        </div>
+    </div>
+
+    <div id="div_alunos" class="div_alunos ocultar">
+       
+        <br>
+
+        <label for="labelNome">Nome Completo</label>
+        <input id="input_nome_aluno" type="text">
+
+        <br>
+        <br>
+
+        <label for="">Email</label>
+        <input id="input_email_aluno" type="email">
+
+        <br>
+        <br>
+
+        <label for="labeldataNasc">Data Nascimento</label>
+        <input id="input_dataNasc_aluno" type="date">
+
+        <br>
+        <br>
+
+        <label for="labelEndereco">Endereço</label>
+        <input id="input_endereco_aluno" type="text">
+
+        <br>
+        <br>
+
+        <label for="labelTelefone">Telefone</label>
+        <input id="input_telefone_aluno" type="text">
+       
+        <br>
+        <br>
+
+        <button class="btn2" id="btn_salvar_aluno">Salvar Aluno</button>
+    </div>
+
+    <div id="div_cursos" class="div_cursos ocultar">
+        <br>
+        <label for="labelNomeCurso">Nome do Cursos</label>
+        <input id="input_nome_curso" type="text">
+        <br>
+        <br>
+        <label for="labelDescricao">Descrição</label>
+        <input id="input_descricao_curso" type="text">
+        <br>
+        <br>
+        <label for="labelCargaHoraria">Carga Horária</label>
+        <input id="input_horaria_curso" type="number">
+        <br>
+        <br>
+        <button class="btn2" id="btn_salvar_cursos">Salvar Curso</button>
+    </div>
+   
+    <div id="div_professores" class="div_professores ocultar">
+        <br>
+        <label for="labelNomeProfessor">Nome do professor(a)</label>
+        <input id="input_nome_professor" type="text">
+        <br>
+        <br>
+        <label for="labelCursoProfessor">Curso em que dá aula:</label>
+        <input id="input_curso_professor" type="text">
+        <br>
+        <br>
+        <button class="btn2" id="btn_salvar_prof">Salvar Professor</button>
+    </div>
+    <div class="listar ocultar" id="div_listagem_alunos">
+        <h1>Listagem de Alunos</h1>
+        <p id="div_dados">Os dados do BD irão aparecer aqui</p>
+
+    </div>
+
+    <div class="listacurso ocultar" id="div_listagem_cursos">
+        <h1>Listagem de Cursos</h1>
+        <p id="div_dadoscurso">Os dados do BD irão aparecer aqui</p>
+    </div>
+
+
+</body>
+
+<script>
+    //trabalhando com DOM, identificar no meu doc o btn_Cadastro
+    let botao_aluno  = document.getElementById("btn_cad_alunos")
+    let botao_curso = document.getElementById("btn_cad_cursos")
+    let botao_professores = document.getElementById("btn_cad_professores")
+    let botao_lista = document.getElementById("btn_cad_listar")
+    let botao_listacurso = document.getElementById("btn_cad_listar_cursos")
+    //escuta algum evento, se é passar o mouse em cima ou clicar
+
+    botao_aluno.addEventListener("click",()=>{
+        //quando clicar no botão aluno, vai add um evento e vai acotecer o none-(ocultar)
+        document.getElementById("div_alunos").classList.toggle("ocultar")
+        document.getElementById("div_cursos").classList.add("ocultar")
+        document.getElementById("div_professores").classList.add("ocultar")
+        document.getElementById("div_listagem_alunos").classList.add("ocultar")
+        document.getElementById("div_listagem_cursos").classList.add("ocultar")
+
+        //classList= lista de classse quevai no elemnto ocultar da div do curso
+
+    })
+      // Evento para exibir ou ocultar o cadastro de cursos
+    botao_curso.addEventListener("click", () => {
+        document.getElementById("div_cursos").classList.toggle("ocultar")
+        document.getElementById("div_professores").classList.add("ocultar")
+        document.getElementById("div_alunos").classList.add("ocultar")
+        document.getElementById("div_listagem_alunos").classList.add("ocultar")
+        document.getElementById("div_listagem_cursos").classList.add("ocultar")
+        
+        })
+
+    botao_professores.addEventListener("click", () => {
+        document.getElementById("div_professores").classList.toggle("ocultar")
+        document.getElementById("div_cursos").classList.add("ocultar")
+        document.getElementById("div_alunos").classList.add("ocultar")
+        document.getElementById("div_listagem_alunos").classList.add("ocultar")
+        document.getElementById("div_listagem_cursos").classList.add("ocultar")
+           
+    })
+
+    botao_lista.addEventListener("click",async ()=>{
+        document.getElementById("div_listagem_alunos").classList.toggle("ocultar")
+        document.getElementById("div_listagem_cursos").classList.add("ocultar")
+        document.getElementById("div_cursos").classList.add("ocultar")
+        document.getElementById("div_alunos").classList.add("ocultar")
+        document.getElementById("div_professores").classList.add("ocultar")
+
+        try {
+            const resposta = await fetch ("http://localhost:3000/buscar")
+            //fetch faz uma requisição determinado endereço
+            const dados = await resposta.json()
+
+            //Automotizando a exibição dos dados
+            //0 até 5 = 6 itens
+
+            document.getElementById("div_dados").innerHTML = ""
+
+            let contador = 0 
+            let informacoes = ""
+            dados.alunos.forEach(element => {
+                document.getElementById("div_dados").innerHTML += `Nome: ${element.nome}, e-mail: ${element.email} <br><br>`
+            });
+
+        } catch (error) {
+            console.log(`O erro foi ${error}`)
+        }
+    })
+
+
+    botao_listacurso.addEventListener("click",async ()=>{
+        document.getElementById("div_listagem_cursos").classList.toggle("ocultar")
+        document.getElementById("div_listagem_alunos").classList.add("ocultar")
+        document.getElementById("div_cursos").classList.add("ocultar")
+        document.getElementById("div_alunos").classList.add("ocultar")
+        document.getElementById("div_professores").classList.add("ocultar")
+
+        try {
+            const resposta = await fetch("http://localhost:3000/buscarcurso")
+            //fetch faz uma requisição determinado endereço
+            const dados = await resposta.json()
+
+            //Automotizando a exibição dos dados
+            //0 até 5 = 6 itens
+
+            document.getElementById("div_dadoscurso").innerHTML = ""
+
+            let contador = 0 
+            let informacoes = ""
+            dados.cursos.forEach(element => {
+                document.getElementById("div_dadoscurso").innerHTML += `Nome do Curso: ${element.nome_curso}, Descrição: ${element.descricao}, Carga Horária: ${element.carga_horaria}<br><br>`
+            });
+
+        } catch (error) {
+            console.log(`O erro foi ${error}`)
+        }
+    })
+
+    let botao_salvara = document.getElementById("btn_salvara")
+    botao_salvara.addEventListener("click", ()=>{
+        alert("Cadastro do Aluno Salvo")
+    })
+
+    let botao_salvarc = document.getElementById("btn_salvarc")
+    botao_salvarc.addEventListener("click", ()=>{
+        alert("Cadastro do Curso Salvo")
+    })
+
+    let botao_salvarp = document.getElementById("btn_salvarp")
+    botao_salvarp.addEventListener("click", ()=>{
+        alert("Cadastro do Professor Salvo")
+    })
+
+ 
+</script>
+
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sistema Bancario</title>
+</head>
+<body>
+    <header>
+        <h1>Conta Bancária</h1>
+    </header>
+    <main>
+        <section>
+            <label for="titular">Titular</label>
+            <br>
+            <input type="text" id="titular">
+            <br>
+            <br>
+            <label for="cpf">CPF</label>
+            <br>
+            <input type="number" id="cpf">
+            <br>
+            <br>
+            <label for="saldo">Saldo</label>
+            <br>
+            <input type="number" id="saldo">
+            <br>
+            <br>
+            <label for="n_conta">Número da Conta</label>
+            <br>
+            <input type="number" id="n_conta">
+            <br>
+            <br>
+            <label for="n_agencia">Número da Agência</label>
+            <br>
+            <input type="number" id="n_agencia">
+            <br>
+            <br>
+            <button id="criarConta">Criar Conta</button>
+            <br>
+            <h1>Movimentações</h1>
+            <br>
+            <br>
+            <input type="number" name="v" id="valor">
+            <br>
+            <br>
+            <button id="transferir">Transferir Dinheiro</button>
+            <br>
+            <br>
+            <button id="receber">Receber Dinheiro</button>
+            <br>
+            <br>
+            <button id="visualizarSaldo">Saldo</button>
+            <br>
+            <br>
+        </section>
+        <section>
+            <h1>Dados da Conta</h1>
+            <p id="mostraTitular"></p>
+            <p id="mostraCpf"></p>
+            <p id="mostraSaldo"></p>
+            <p id="mostraNconta"></p>
+            <p id="mostraAgencia"></p>
+        </section>
+    </main>
+</body>
+<script>
+    //Criar nossa classe
+    class ContaBancaria{
+        constructor(titular, cpf, saldo, n_conta, n_agencia){
+            this.titular = titular
+            this.cpf = cpf
+            this.saldo = saldo
+            this.n_conta = n_conta
+            this.n_agencia = n_agencia
+        }
+        // Métodos
+        transferir(valor){
+            if(this.saldo >= valor){
+                this.saldo -= Number(valor)
+                alert("Transferência efetuada com sucesso")
+            }else{
+                alert("Saldo insuficiente!")
+            }}
+        receber(valor){
+            this.saldo += Number(valor)
+            alert(`Foi depositado R$ ${valor} na sua conta!`)
+        }
+        visualizarSaldo(){
+
+            alert(`O titular ${this.titular} tem R$ ${this.saldo} `)
+        }
+    }
+    // Front- DOM
+
+    let conta
+
+    document.getElementById("criarConta").addEventListener("click",()=>{
+        const titular = document.getElementById("titular").value
+        const cpf = document.getElementById("cpf").value
+        const saldo = Number(document.getElementById("saldo").value)
+        const n_conta = document.getElementById("n_conta").value
+        const n_agencia = document.getElementById("n_agencia").value
+
+        if (titular==""){
+            return alert("Preencha o nome!")
+        }else if(cpf == ""){
+            return alert("Preencha o CPF!")
+        }else if(saldo==""){
+            return alert("Preencha o Saldo da conta")
+        }
+
+        conta = new ContaBancaria(titular,cpf,saldo,n_conta,n_agencia)
+
+        document.getElementById("mostraTitular").innerText = conta.titular
+        document.getElementById("mostraCpf").innerText = conta.cpf
+        document.getElementById("mostraSaldo").innerText = parseFloat(conta.saldo).toFixed(2)
+        document.getElementById("mostraNconta").innerText = conta.n_conta
+        document.getElementById("mostraAgencia").innerText = conta.n_agencia
+
+    })
+
+    document.getElementById("receber").addEventListener('click',()=>{
+        const valor = parseFloat(document.getElementById("valor").value)
+
+        conta.receber(Number(valor))
+        document.getElementById("mostraSaldo").innerText = ""
+        document.getElementById("mostraSaldo").innerText = parseFloat(conta.saldo).toFixed(2)
+    })
+
+    document.getElementById("transferir").addEventListener('click',()=>{
+            const valor = parseFloat(document.getElementById("valor").value)
+
+            conta.transferir(Number(valor))
+            document.getElementById("mostraSaldo").innerText = ""
+            document.getElementById("mostraSaldo").innerText = parseFloat(conta.saldo).toFixed(2)
+    })
+
+    document.getElementById("visualizarSaldo").addEventListener('click',()=>{
+            const saldo = parseFloat(document.getElementById("valor").value)
+
+            conta.visualizarSaldo(Number(valor))
+            document.getElementById("mostraSaldo").innerText = ""
+            document.getElementById("mostraSaldo").innerText = parseFloat(conta.saldo).toFixed(2)
+    })
+
+</script>
+</html>

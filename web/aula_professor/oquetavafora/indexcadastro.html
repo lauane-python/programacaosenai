@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro de usuário</h1>
+    <div>
+        <label for=""nome><strong>Nome Completo</strong></label>
+        <br>
+        <!-- O atributo "required" torna o campo obrigatório -->
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" maxlength="50" minlength="3" required>
+        <br>
+        <br>
+        <label for=""idade><strong>Data de nascimento</strong></label>
+        <br>
+        <input type="date" id="data_nascimento" name="data_nascimento" required>
+        <br>
+        <br>
+        <label for=""email><strong><i>E-mail</i></strong></label>
+        <br>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+        <br>
+        <br>
+        <label for="address"><strong>Senha</strong></label>
+        <br>
+        <input type="text" id="s1" name="s1" placeholder="Digite sua Senha" required>
+        <br>
+        <br>
+        <label for="address"><strong>Comfirmação de Senha</strong></label>
+        <br>
+        <input type="text" id="s2" name="s2" placeholder="Digite Senha Novamente" required>
+        <br>
+    </div>
+    <br>
+    <div>
+        <label for="address"><strong>Rua</strong></label>
+        <br>
+        <input type="text" id="rua" name="rua" placeholder="Digite sua Rua" required>
+        <br>
+        <br>
+        <label for="address"><strong>Bairro</strong></label>
+        <br>
+        <input type="text" id="bairro" name="bairro" placeholder="Digite sua Bairro" required>
+        <br>
+        <br>
+        <label for="address"><strong>Número</strong></label>
+        <br>
+        <input type="text" id="numero" name="numero" placeholder="Digite seu número" required>
+        <br>
+        <br>
+        <label for="address"><strong>Complemento</strong></label>
+        <br>
+        <input type="text" id="complemento" name="complemento" placeholder="Digite seu complemento">
+    </div>
+    <div>
+        <br>
+        <label for="address"><strong>CEP</strong></label>
+        <br>
+        <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required>
+        <br>
+        <br>
+        <label for="address"><strong>Cidade</strong></label>
+        <br>
+        <input type="text" id="cidade" name="cidade" placeholder="Digite sua Cidade" required>
+        <br>
+        <br>
+        <label for="address"><strong>UF (Unidade Federativa)</strong></label>
+        <br>
+        <form>
+            <select name="menu" id="menu">
+                <option value="São Paulo">São Paulo</option>
+                <option value="Minas Gerais">Minas Gerais</option>
+                <option value="Rio De Janeiro">Rio De Janeiro</option>
+                <option value="Santa Catarina">Santa Catarina</option>
+                <option value="Rio Grande Do Sul">Rio Grande Do Sul</option>
+                <option value="Ceará">Ceará</option>
+            </select>
+        </form>
+    </div>
+    <br>
+    <button>Cadastrar</button>
+    <p>Para continuar acessando nossa página <a href="indexcadastro2.html" target="_blank">clique aqui</a></p>
+</body>
+</html>

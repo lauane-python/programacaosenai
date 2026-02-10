@@ -1,0 +1,8 @@
+.botao{
+    width: 150px;
+    background-color:rgb(131, 130, 161);
+    border-radius: 10px;
+}
+body{
+    background-color: rgb(215, 224, 250);
+}

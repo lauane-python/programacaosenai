@@ -1,0 +1,24 @@
+p{
+    font-size: 80px;
+    color: rgb(196, 233, 255);
+    background-color: rgba(9, 99, 99, 0.716);
+    text-align: center;
+}
+.comeco{
+    font-size: 80px;
+    color: rgb(196, 233, 255);
+    background-color: rgb(15, 53, 53);
+    text-align: left;
+}
+.meio{
+    font-size: 80px;
+    color: rgb(196, 233, 255);
+    background-color: rgba(3, 49, 49, 0.73);
+    text-align: center;
+}
+.final{
+    font-size: 80px;
+    color: rgb(196, 233, 255);
+    background-color: rgb(5, 113, 113);
+    text-align: end;
+}

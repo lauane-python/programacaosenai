@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><strong>Fintech Ágil</strong></h1>
+        <p>Somos uma empresa de <strong>Tecnologia Financeira</strong>, a procura de melhor atender ao nosso público</p>
+    </header>
+    <main>
+        <section>
+            <fieldset>
+                <br>
+                <br>
+                <label for="email">Email</label>
+                <br>
+                <input type="email" id="email" placeholder="Digite seu email...">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label for="senha">Senha</label>
+                <br>
+                <input type="password" id="senha" placeholder="Digite seu senha...">
+                <br>
+                <br>  
+                <br>
+                <br>
+                <br>
+                <br>     
+                <button id="btn_login">Login</button>
+            </fieldset>
+        </section>
+    </main>
+    <footer>
+        <p>Todos os direitos reservados. &copy Fintech Ágil. </p>
+    </footer>
+</body>
+<script>
+    //Criar um evento para quando clicar no botão
+    document.getElementById("btn_login").addEventListener("click", async ()=>{
+        //primeira etapa - pegar as informações dos inputs
+        const email = document.getElementById("email").value
+        const senha = document.getElementById("senha").value
+        //segunda etapa - fazer a requisição para o back-end
+        const resposta = await fetch(`http://localhost:3000/login`,{
+            method:"POST",
+            headers:{
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                "email":email,
+                "senha":senha})
+        })
+        //terceira etapa - pegar a resposta do back-end
+
+        if(resposta.ok == true){
+            const dados = await resposta.json()
+            document.getElementById("resultado").innerText = dados.resposta
+        }else{
+        }
+        
+    })
+
+</script>
+</html>

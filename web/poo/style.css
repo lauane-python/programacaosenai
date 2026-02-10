@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body{
+    background-color: #691310;
+    color: #f7edde;
+    font-weight: 400;
+}
+
+input{
+    margin: 100;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #db9a8f;
+}
+
+input{
+    border: 2px solid #f7edde;
+    transition: box-shadow 0.3s ease;
+}
+
+input:hover,
+input:focus{
+    box-shadow: 0 0 8px #f7edde;
+    outline: none;
+}
+
+button{
+    padding: 5px;
+    border: #691310;
+
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><strong>Fintech Ágil</strong></h1>
+        <p>Somos uma empresa de <strong>Tecnologia Financeira</strong>, a procura de melhor atender ao nosso público</p>
+    </header>
+    <main>
+        <section>
+            <fieldset>
+                <br>
+                <br>
+                <label for="nome"><strong>Nome Completo</strong></label>
+                <br>
+                <br>
+                <input type="text" id="nome" placeholder="Digite seu nome completo...">
+                <br>
+                <br>
+                <br>
+                <label for="email"><strong>Email</strong></label>
+                <br>
+                <br>
+                <input type="email" id="email" placeholder="Digite seu email...">
+                <br>
+                <br>
+                <br>
+                <label for="senha"><strong>Assunto</strong></label>
+                <br>
+                <br>
+                <input type="text" id="assunto" placeholder="Digite seu assunto...">
+                <br>
+                <br>
+                <br>  
+                <label for="email"><strong>Mensagem</strong></label>
+                <br>
+                <br>
+                <input type="text" id="mensagem" placeholder="Digite sua mensagem...">
+                <br>
+                <br>
+                <br>       
+                <button id="btn_enviar"><strong>Enviar</strong></button>
+            </fieldset>
+        </section>
+    </main>
+    <footer>
+        <p>Todos os direitos reservados. &copy Fintech Ágil. </p>
+    </footer>
+
+<script>
+    //Criar um evento para quando clicar no botão
+    document.getElementById("btn_enviar").addEventListener("click", async ()=>{
+        //primeira etapa - pegar as informações dos inputs
+        const nome = document.getElementById("nome").value
+        const email = document.getElementById("email").value
+        const assunto = document.getElementById("assunto").value
+        const mensagem = document.getElementById("mensagem").value
+        //segunda etapa - fazer a requisição para o back-end
+        const resposta = await fetch(`http://localhost:3000/faleconosco`,{
+            method:"POST",
+            headers:{
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                "nome":nome,
+                "email":email,
+                "mensagem":mensagem,
+                "assunto":assunto})
+        })
+        //terceira etapa - pegar a resposta do back-end
+
+        if(resposta.ok == true){
+            const dados = await resposta.json()
+            document.getElementById("resultado").innerText = dados.resposta
+        }else{
+        }
+        
+    })
+
+</script>
+</body>
+</html>

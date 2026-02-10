@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    background-color: #F4F0EA;
+    color: #fbfbfb;
+    font-family: "Cabin", sans-serif;
+    font-weight: 400;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+label {
+    color: #d45050;
+}
+
+header {
+    padding: 2rem;
+    background-color: #d00000;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+input[type="radio"], input[type="checkbox"] {
+    accent-color: #fbfbfb;
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="email"]{
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid #d45050;
+    outline: none;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: #d45050b7;
+}
+
+button {
+    background-color: #d00000;
+    border: none;
+    padding: 1rem;
+    color: #fbfbfb;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+fieldset{
+    outline: none;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 500px;
+    height: 450px;
+    border: 2px solid #d45050;
+    align-items: center;
+}
+
+footer {
+    background-color: #d00000;
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}

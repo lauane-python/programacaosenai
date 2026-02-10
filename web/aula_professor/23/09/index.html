@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usando DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div.principal, <div id="id">
+        <label for="input_v1">Primeiro valor</label>
+        <input type="text" class="input" id="input_v1">
+        <br>
+        <br>
+        <label for="input_v2">Segundo valor</label>
+        <input type="text" class="input" id="input_v2">
+        <br>
+        <br>
+        <button class="botao" id="btn_calcular">calcular</button>
+        <h1 id="h1_saida">resultado final</h1>
+        <button class="botao" id="btn_limpar">Limpar</button>
+    </div>
+   
+</body>
+<script>
+alert("carregou ")
+    //bsucando uma informação-utilizando o DOM
+document.getElementById("btn_calcular").addEventListener("click",()=>{
+
+    const v1 = document.getElementById("input_v1").value
+    const v2 = document.getElementById("input_v2").value
+
+    const saida = document.getElementById("h1_saida")
+    const resultado_final = parseInt(v1)+parseInt(v2)
+    //criandouma variavel(const) para ele guardar a caixade texto dentro da variavel
+    saida.innerText += ` ${resultado_final}`
+})  
+
+document.getElementById("btn_limpar").addEventListener("click",()=>{
+    alert("clicou no botão de limpar")
+    document.getElementById("input_v1").value= ""
+    document.getElementById("input_v2").value= ""
+    document.getElementById("h1_saída").innerText = "Resultado Final"
+})
+</script>
+</html>
+
